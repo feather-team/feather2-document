@@ -14,7 +14,7 @@ npm install -g feather2
 feather2 -v
 ```
 
-### 命令
+### 常用命令
 
 执行feather2 -h|--help 查看feather2所支持的命令
 
@@ -74,3 +74,11 @@ feather2 -h
     why is bower？ bower的资源非常丰富，甚至可以支持安装github上的某一个仓库的分支，并且能够自行处理依赖，就像使用npm安装feather2一样方便。同时，在项目中还可以像使用node中引用一个npm包一样引用 components组件，用户无需知道组件的main文件到底是什么，具体使用可见[components](./components.md)
 
     注：bower包几乎都采用了amd或umd规范，甚至有些bower包的是没有规范的，而feather因为静态资源管理的问题，采用了commonjs规范，因此feather对其进行了一定的处理，尽可能的让bower中的包能够正常的运行。同时删除了bower包中无用的文件。
+
+* ####server
+    server命令用于开启一个webserver，用于本地调试， 1.x中则需要安装jdk包，而feather2中对此进行了改进，只需要安装node即可
+
+    注： 如果启动过程中碰到fail. 可查看是否端口已被占用， 可使用-p参数进行端口指定， timeout错误时， 指定--timeout进行指定超时时间
+
+* ####release
+    release是之后我们最常使用到的命令， 用于编译feather项目， 使用-w参数即可实现 保存后自动编译的效果，-L则开启livereload，免去手动刷新浏览器的烦恼，其他参数可见help
