@@ -1,0 +1,102 @@
+##第一个例子
+
+使用feather2的init命令，进行一个新项目的创建
+
+```sh
+feather2 init demo
+```
+
+进行编译
+```sh
+feather2 release -r demo
+```
+
+本地预览
+```sh
+feather2 server start 
+```
+
+feather2有一个标准的目录结构规范， 如下：
+
+```sh
+├── components      #组件包
+│   ├── backbone
+│   │   ├── backbone.js
+│   │   └── bower.json
+│   └── underscore
+│       ├── bower.json
+│       └── underscore.js
+├── conf
+│   ├── conf.js     #2.0的核心配置文件
+│   ├── deploy
+│   │   └── local.js
+│   ├── pack.json   #打包文件，对全局起作用
+│   └── rewrite.js  #url重写文件
+├── data            #测试目录，同1.x中的test目录
+│   └── ajax
+│       └── test.json
+├── index.html
+├── layout.html
+├── pagelet         #pagelet目录，feather会对此目录中的文件进行特殊封装，此文件夹下的文件同widget
+│   ├── ajax
+│   │   ├── ajax.css
+│   │   └── ajax.html
+│   └── bigrender
+│       ├── bigrender.css
+│       ├── bigrender.html
+│       └── bigrender.js
+├── static
+│   ├── index.css
+│   └── index.js
+├── test
+│   └── test.html   #预览情况下才会产出，正式环境下不会产出，此目录用于测试，预览下于其他模板文件无异
+└── widget
+    ├── footer
+    │   ├── footer.css
+    │   └── footer.html
+    └── header
+        ├── header.css
+        ├── header.html
+        └── header.js
+```
+
+### 目录
+
+注： feather中提倡大家同目录下的引用，使用相对路径，以尽量达到目录的独立性，以便以后迁移或者代码共享
+
+* ####conf
+    conf目录专门用来存在一些配置文件， 1.x中的feather_conf.js改名为conf/conf.js。
+
+    deploy的配置除了可以直接 feather.set('deploy') 的方式设置外， 还可以在conf/deploy目录中创建文件的方式存在， deploy的key则为文件的文件名， 这样避免了多人合作时，提交配置文件代码经常会出现冲突的情况。 注: deploy目录中出现的相对路径都是相对于项目目录。
+
+    同时可以在任意级目录下创建pack.json文件， 用于目录的打包合并， 注：pack.json中出现的相对路径都是相对于当前目录。
+
+    rewrite.js可进行一些转发，同时因为feather2直接使用了node作为webserver，所以rewrite.js中对应的url可以以函数的方式存在，以便于更方便的输出结果，比如：
+
+    ```js
+module.exports = {
+    '^/xyz': function(res, req, next){
+        res.send('xyz');
+        next();
+    }
+};
+    ```
+
+* ####page
+    页面级别的文件，放置于page目录中，该种文件不可被同类文件引入，feather2中弱化了page目录，使用者可在项目目录下或任意除系统占用的目录外的目录中创建page文件
+
+* ####widget
+    模板组件， 由html、js、css等文件组成，widget之间和互相调用， 也可提供为page或pagelet页面使用
+
+* ####components
+    js组件， 由js、css等文件组成，主要作为js的插件或css类库存在， 可提供给任意文件使用
+
+* ####pagelet
+    page片段， 有着和widget同样的属性，不过是给page页面调用，或直接作为页面输出， 可用其实现bigrender、bigpipe、quickling、ajaxify等架构级别优化。
+
+* ####test 
+    test目录可用来做一些单元测试，或者页面测试， 其目录同page目录， 只是在非预览模式下，不会进行编译和产出
+
+* ####data
+    data目录用来做数据的存放，比如使用mustache模板时，可提供数据给 widget、page、pagelet使用， 只需要保证目录下的文件路径于对应的页面一致，并以.json结束即可。
+    同时也可以存放一些异步请求的数据
