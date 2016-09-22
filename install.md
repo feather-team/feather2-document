@@ -66,7 +66,7 @@ feather2 -h
         ├── header.css
         ├── header.html
         └── header.js
-    ```
+```
 
 ####* install 
     install命令用于安装ui组件，feather2中对bower进行了集成，以便用户更好，更快的安装组件，安装完成后，组件会被放置于components目录下进行统一管理。
