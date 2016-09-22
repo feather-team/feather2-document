@@ -5,5 +5,6 @@ feather2使用文档
     * [安装](./安装.md)
     * [第一个例子](./第一个例子.md)
     * [资源引用](./资源引用.md)
-    * [widget](./widget.md)
+    * [三种语言扩展](./三种语言扩展.md)
+    * [标签扩展](./widget.md)
     * [components](./components.md)
