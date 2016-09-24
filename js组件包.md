@@ -2,6 +2,20 @@
 
 在feather中，component是指功能独立或完善的js插件或带有css的组件，这些组件可以当成模块供其他的js调用，或者供html引用，比如jquery、jquery-ui，backbone等都可以称之为components
 
+component的目录结构如下：
+```sh
+components      #组件包
+├── backbone
+│   ├── backbone.js
+│   └── bower.json
+├── bootstrap
+│   ├── bootstrap.css
+│   ├── lib.js  #bower.json中的main属性指向此文件，调用时，直接 使用bootstrap即可
+│   └── bower.json
+└── underscore
+    ├── bower.json
+    └── underscore.js
+```
 feather2对component的安装提供了install命令，该命令是对bower的封装，可以方便开发更好的进行组件的管理
 
 why is bower？ 
@@ -38,4 +52,14 @@ require.async('socket.io-client', function(io){
 
 #### components查找规则
 feather首先会对所有components目录中包当中的**.json文件进行分析，提取main属性，并缓存。
+
+bower.json
+```js
+{
+    "name": "bootstrap",
+    "main": "lib.js",
+    //其他属性
+}
+```
+
 当使用某一个文件时，无论是否是全路径还是段路径，都会直接先查找components中的包，如果找到正确的文件，则引用，否则会直接按照全路径做对应的处理
