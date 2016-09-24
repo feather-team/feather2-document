@@ -5,16 +5,16 @@
 component的目录结构如下：
 ```sh
 components      #组件包
-├── backbone
-│   ├── backbone.js
-│   └── bower.json
-├── bootstrap
-│   ├── bootstrap.css
-│   ├── lib.js  #bower.json中的main属性指向此文件，调用时，直接 使用bootstrap即可
-│   └── bower.json
-└── underscore
-    ├── bower.json
-    └── underscore.js
+    ├── backbone
+    │   ├── backbone.js
+    │   └── bower.json
+    ├── bootstrap
+    │   ├── bootstrap.css
+    │   ├── lib.js  #bower.json中的main属性指向此文件，调用时，直接 使用bootstrap即可
+    │   └── bower.json
+    └── underscore
+        ├── bower.json
+        └── underscore.js
 ```
 feather2对component的安装提供了install命令，该命令是对bower的封装，可以方便开发更好的进行组件的管理
 
@@ -49,6 +49,24 @@ require.async('socket.io-client', function(io){
 });
 </script>
 ```
+
+注：引用component的js文件时，feather2会自动加载该js文件的同名css文件，提高开发体验
+
+```sh
+components      #组件包
+    └── ui
+        ├── ui.js
+        ├── ui.css
+        └── bower.json
+```
+
+如上，引用时，只需引用ui或ui.js即会加载ui.css
+
+```js
+require.async('ui');
+```
+
+刷新查看效果
 
 #### components查找规则
 feather首先会对所有components目录中包当中的**.json文件进行分析，提取main属性，并缓存。
