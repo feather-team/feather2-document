@@ -50,7 +50,7 @@ require.async('socket.io-client', function(io){
 </script>
 ```
 
-注：引用component的js文件时，feather2会自动加载该js文件的同名css文件，提高开发体验
+####注：引用component的js文件时，feather2会自动加载该js文件的同名css文件，提高开发体验
 
 ```sh
 components      #组件包
