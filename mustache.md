@@ -32,4 +32,4 @@ index.html
 
 同样 widget和pagelet也是支持数据渲染的，只需要在test目录下建立与其路径一致的.json文件即可， 并且等此widget或者pagelet被其他页面引用时， 引用页面也会自动加载其测试数据，以便调试方便
 
-另外 feather2提供了一个 test/_global_.json文件，作为全局数据使用，所有的页面均为加载该数据文件
+另外 feather2提供了一个 test/\_global\_.json文件，作为全局数据使用，所有的页面均为加载该数据文件
