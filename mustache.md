@@ -9,6 +9,12 @@ mustache是一种 Logic-less's template engine，语法相对比较轻量， 支
 
 在feather2中使用mustache也非常简单，只需要熟悉mustache的语法即可，具体语法可见官方网站，这里只做简单介绍
 
+开启mustache
+
+```js
+feather.config.set('template.mustache', true);
+```
+
 开发者可和后端开发在开发前期进行数据格式的约定：
 
 
