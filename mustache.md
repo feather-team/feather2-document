@@ -1,4 +1,4 @@
-##基于mustache模板引擎的应用开发
+## 基于mustache模板引擎的应用开发
 
 feather2不仅支持了纯静态项目或结合mvvm框架的webapp等单页面应用开发外，同时还集成了[mustache](http://mustache.github.io/)模板引擎，以便实现非纯ajax数据交互的项目场景
 
